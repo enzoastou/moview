@@ -24,7 +24,11 @@ ratings = responseRatings.json()
 
 ratingsList=list(ratings.items())[5:-1]
 
-def UIprint(ratingsList):
+def UIprint(ratingsList, includeMoviewScore=False):
+    #if includeMoviewScore:
+        #if ratingsList[] not in ["metacritic", "rottenTomatoes"]
+        #mean = ratingsList[:,1].sum()
+        #ratingsList.append(mean)
     for item in ratingsList:
         print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "/10")\
         if item[0] not in ["metacritic", "rottenTomatoes"] else\
