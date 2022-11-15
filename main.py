@@ -6,20 +6,17 @@ Date of creation: 15/11/2022
 """
 import requests
 import json
+import os
+from dotenv import load_dotenv
+
+config = dotenv_values(".env")
+
 
 from api_calls import movie_search
 from api_calls import ratings_retrieval
 
 
 text="inception"
-responseMovieSearch = requests.get("https://imdb-api.com/API/SearchMovie/k_djox3zay/" 
-                        + text)
-movies = responseMovieSearch.json()["results"]
-titles = [movie["title"] for movie in movies]
-ids = [movie["id"] for movie in movies]
-
-print(titles[0])
-print(ids[0])
 
 responseRatings = requests.get("https://imdb-api.com/API/Ratings/k_djox3zay/"
                                + ids[0])
@@ -35,7 +32,7 @@ def UIprint(ratingsList, includeMoviewScore=False):
     for item in ratingsList:
         print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "/10")\
         if item[0] not in ["metacritic", "rottenTomatoes"] else\
-        print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "/100")
+        print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "%")
         
 UIprint(ratingsList)
 
