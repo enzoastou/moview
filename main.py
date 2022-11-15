@@ -8,7 +8,7 @@ import requests
 import json
 
 
-text="tenet"
+text="inception"
 responseMovieSearch = requests.get("https://imdb-api.com/API/SearchMovie/k_djox3zay/" 
                         + text)
 movies = responseMovieSearch.json()["results"]
@@ -22,6 +22,12 @@ responseRatings = requests.get("https://imdb-api.com/API/Ratings/k_djox3zay/"
                                + ids[0])
 ratings = responseRatings.json()
 
-print(ratings[5:-1])
+ratingsList=list(ratings.items())[5:-1]
 
-
+def UIprint(ratingsList):
+    for item in ratingsList:
+        print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "/10")\
+        if item[0] not in ["metacritic", "rottenTomatoes"] else\
+        print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "/100")
+        
+UIprint(ratingsList)
