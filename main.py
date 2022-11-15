@@ -7,6 +7,9 @@ Date of creation: 15/11/2022
 import requests
 import json
 
+from api_calls import movie_search
+from api_calls import ratings_retrieval
+
 
 text="inception"
 responseMovieSearch = requests.get("https://imdb-api.com/API/SearchMovie/k_djox3zay/" 
@@ -35,3 +38,11 @@ def UIprint(ratingsList, includeMoviewScore=False):
         print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "/100")
         
 UIprint(ratingsList)
+
+
+#import argparse
+
+#parser = argparse.ArgumentParser(description='Create a ArcHydro schema')
+#parser.add_argument('--workspace', metavar='path', required=True, help='the path to workspace')
+#args = parser.parse_args()
+#main(workspace=args.workspace, schema=args.schema, dem=args.dem)
