@@ -5,7 +5,6 @@ Date of creation: 15/11/2022
 
 """
 import requests
-import json
 import os
 from dotenv import load_dotenv
 
@@ -62,10 +61,16 @@ class RatingsRetrieval:
         response = self._responseRatings.json()
         return response
     
-    def get_ratings_list(self):
+    def get_ratings_list(self, includeMoviewScore=True):
         """
         Gets and returns all the ratings on the id passed when intialising the 
         class instance as a list of strings.
+        
+        Parameters
+        ----------
+        includeMoviewScore : Boolean, optional
+            Whether or not to include the moview score (mean /10 of the others)
+            in the ratings list. The default is True.
 
         Returns
         -------
@@ -76,4 +81,13 @@ class RatingsRetrieval:
         """
         ratings =  self.get_response()
         ratingsList = list(ratings.items())[5:-1]
+        
+        #moview score is just the out of 10 mean rating of all other ones
+        if includeMoviewScore:
+            sum=0
+            for item in ratingsList:
+                # metacritic and rottenTomatoes scores are /100 and not /10
+                sum += float(item[1]) if item[0] not in ["metacritic", \
+                       "rottenTomatoes"] else float(item[1])/10
+            ratingsList.append(("moview", sum/5))
         return ratingsList

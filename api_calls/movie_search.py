@@ -64,34 +64,32 @@ class MovieSearch:
     
     def get_movies(self):
         """
-        Gets and returns all the movies matching the title passed when
+        Gets and returns all the movie descriptions matching the title passed when
         initialising the class instance as a JSON array.
         
         Returns
         -------
         movies : String
-            All the movies matching the title passed when initialising the
+            All the movie descriptions matching the title passed when initialising the
             class instance as a JSON array.
 
         """
         movies =  self.get_response()["results"]
         return movies
     
-    def get_titles(self):
+    def get_best_match_movie(self):
         """
-        Gets and returns all the movie titles matching the title passed when
-        intialising the class instance as a list of strings.
+        Gets and returns the movie description with the best match with the title
+        passed when intialising the class instance as a JSON object.
 
         Returns
         -------
-        titles : String list
-            All the movie titles matching the title passed when initialising
-            the class instance as a list of strings.
+        titles : String
+            The movie description with the best match with the title passed when 
+            intialising the class instance as a string.
 
         """
-        movies = self.get_movies()
-        titles = [movie["title"] for movie in movies]
-        return titles
+        return self.get_movies()[0]
     
     def get_ids(self):
         """
