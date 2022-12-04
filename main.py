@@ -4,27 +4,20 @@ Authors: Driss BENSAID & Enzo Fragale
 Date of creation: 15/11/2022
 
 """
-import requests
 import json
-import os
-from dotenv import load_dotenv
-
-config = dotenv_values(".env")
-
 
 from api_calls import movie_search
 from api_calls import ratings_retrieval
 
-
 text="inception"
 
-responseRatings = requests.get("https://imdb-api.com/API/Ratings/k_djox3zay/"
-                               + ids[0])
-ratings = responseRatings.json()
+movieSearch = movie_search.MovieSearch(text)
+bestMatchId = movieSearch.get_best_match_id()
+ratingsRetrieval = ratings_retrieval.RatingsRetrieval(bestMatchId)
+ratingsList = ratingsRetrieval.get_ratings_list()
+print(ratingsList)
 
-ratingsList=list(ratings.items())[5:-1]
-
-def UIprint(ratingsList, includeMoviewScore=False):
+def ui_print(ratingsList, includeMoviewScore=False):
     #if includeMoviewScore:
         #if ratingsList[] not in ["metacritic", "rottenTomatoes"]
         #mean = ratingsList[:,1].sum()
@@ -32,9 +25,11 @@ def UIprint(ratingsList, includeMoviewScore=False):
     for item in ratingsList:
         print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "/10")\
         if item[0] not in ["metacritic", "rottenTomatoes"] else\
-        print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "%")
+        print("Reviewer: " + str(item[0]) + ", Score: " + str(item[1]) + "/100")
         
-UIprint(ratingsList)
+ui_print(ratingsList)
+
+
 
 
 #import argparse
