@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>movie_search API documentation</title>
+<meta name="description" content="Title: movie_search module of the Moview project
+Authors: Driss BENSAID &amp; Enzo Fragale
+Date of creation: 15/11/2022" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>movie_search</code></h1>
+</header>
+<section id="section-intro">
+<p>Title: movie_search module of the Moview project
+Authors: Driss BENSAID &amp; Enzo Fragale
+Date of creation: 15/11/2022</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Title: movie_search module of the Moview project
+Authors: Driss BENSAID &amp; Enzo Fragale
+Date of creation: 15/11/2022
+
+&#34;&#34;&#34;
+import requests
+import json
+import os
+from dotenv import load_dotenv
+
+class MovieSearch:
+    &#34;&#34;&#34;
+    Contains various functions to retrieve results from a movie search request
+    on the imdb API.
+    &#34;&#34;&#34;
+    _searchedTitle=&#34;&#34;
+    _responseMovieSearch=&#34;&#34;
+    
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+    
+    def __init__(self, title):
+        &#34;&#34;&#34;
+        Initalises the class instance based on the title of the movie to be
+        searched.
+
+        Parameters
+        ----------
+        title : String
+            Represents the title of the movie to be searched.
+
+        Returns
+        -------
+        None.
+
+        &#34;&#34;&#34;
+        self._searchedTitle = title
+        load_dotenv()
+        apiKey=os.getenv(&#34;KEY&#34;)
+        self._responseMovieSearch = requests.get(
+            &#34;https://imdb-api.com/API/SearchMovie/&#34; + apiKey + &#34;/&#34;
+            + self._searchedTitle)
+        
+    def __repr__(self) -&gt; str:
+        return f&#34;{type(self).__name__}(type={self._type}, \
+                message={self._message}, created_at={self._created_at})&#34;
+    
+    def get_response(self):
+        &#34;&#34;&#34;
+        Gets and returns the response of the movie search request of the title
+        passed when initialising the class instance on the imdb API as a JSON
+        object.
+        
+        Returns
+        -------
+        response : String
+            The response of the movie search request of the title passed when 
+            initialising the class instance on the imdb API as a JSON object.
+
+        &#34;&#34;&#34;
+        response = self._responseMovieSearch.json()
+        return response
+    
+    def get_descriptions(self):
+        &#34;&#34;&#34;
+        Gets and returns all the movie descriptions matching the title passed when
+        initialising the class instance as a list of dicts of Strings.
+        
+        Returns
+        -------
+        movies : List of Dicts of Strings
+            All the movie descriptions matching the title passed when initialising the
+            class instance as a list of dicts of Strings.
+
+        &#34;&#34;&#34;
+        descriptions =  self.get_response()[&#34;results&#34;]
+        return descriptions
+    
+    def get_best_match_description(self):
+        &#34;&#34;&#34;
+        Gets and returns the movie description with the best match with the title
+        passed when intialising the class instance as a dict of Strings.
+
+        Returns
+        -------
+        movie_description : Dict of Strings
+            The movie description with the best match with the title passed when 
+            intialising the class instance as a dict of Strings.
+
+        &#34;&#34;&#34;
+        movieDescription = self.get_descriptions()[0]
+        return movieDescription
+    
+    def get_ids(self):
+        &#34;&#34;&#34;
+        Gets and returns all the movie ids matching the title passed when
+        intialising the class instance as a list of strings.
+
+        Returns
+        -------
+        titles : List of Strings
+            All the movie ids matching the title passed when initialising
+            the class instance as a list of strings.
+
+        &#34;&#34;&#34;
+        movies = self.get_descriptions()
+        ids = [movie[&#34;id&#34;] for movie in movies]
+        return ids
+    
+    def get_best_match_id(self):
+        &#34;&#34;&#34;
+        Gets and returns the id of the movie with the best match with the title
+        passed when intialising the class instance as a string.
+
+        Returns
+        -------
+        titles : String
+            The id of the movie with the best match with the title passed when 
+            intialising the class instance as a string.
+
+        &#34;&#34;&#34;
+        return self.get_ids()[0]</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="movie_search.MovieSearch"><code class="flex name class">
+<span>class <span class="ident">MovieSearch</span></span>
+<span>(</span><span>title)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Contains various functions to retrieve results from a movie search request
+on the imdb API.</p>
+<p>Initalises the class instance based on the title of the movie to be
+searched.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>title</code></strong> :&ensp;<code>String</code></dt>
+<dd>Represents the title of the movie to be searched.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MovieSearch:
+    &#34;&#34;&#34;
+    Contains various functions to retrieve results from a movie search request
+    on the imdb API.
+    &#34;&#34;&#34;
+    _searchedTitle=&#34;&#34;
+    _responseMovieSearch=&#34;&#34;
+    
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+    
+    def __init__(self, title):
+        &#34;&#34;&#34;
+        Initalises the class instance based on the title of the movie to be
+        searched.
+
+        Parameters
+        ----------
+        title : String
+            Represents the title of the movie to be searched.
+
+        Returns
+        -------
+        None.
+
+        &#34;&#34;&#34;
+        self._searchedTitle = title
+        load_dotenv()
+        apiKey=os.getenv(&#34;KEY&#34;)
+        self._responseMovieSearch = requests.get(
+            &#34;https://imdb-api.com/API/SearchMovie/&#34; + apiKey + &#34;/&#34;
+            + self._searchedTitle)
+        
+    def __repr__(self) -&gt; str:
+        return f&#34;{type(self).__name__}(type={self._type}, \
+                message={self._message}, created_at={self._created_at})&#34;
+    
+    def get_response(self):
+        &#34;&#34;&#34;
+        Gets and returns the response of the movie search request of the title
+        passed when initialising the class instance on the imdb API as a JSON
+        object.
+        
+        Returns
+        -------
+        response : String
+            The response of the movie search request of the title passed when 
+            initialising the class instance on the imdb API as a JSON object.
+
+        &#34;&#34;&#34;
+        response = self._responseMovieSearch.json()
+        return response
+    
+    def get_descriptions(self):
+        &#34;&#34;&#34;
+        Gets and returns all the movie descriptions matching the title passed when
+        initialising the class instance as a list of dicts of Strings.
+        
+        Returns
+        -------
+        movies : List of Dicts of Strings
+            All the movie descriptions matching the title passed when initialising the
+            class instance as a list of dicts of Strings.
+
+        &#34;&#34;&#34;
+        descriptions =  self.get_response()[&#34;results&#34;]
+        return descriptions
+    
+    def get_best_match_description(self):
+        &#34;&#34;&#34;
+        Gets and returns the movie description with the best match with the title
+        passed when intialising the class instance as a dict of Strings.
+
+        Returns
+        -------
+        movie_description : Dict of Strings
+            The movie description with the best match with the title passed when 
+            intialising the class instance as a dict of Strings.
+
+        &#34;&#34;&#34;
+        movieDescription = self.get_descriptions()[0]
+        return movieDescription
+    
+    def get_ids(self):
+        &#34;&#34;&#34;
+        Gets and returns all the movie ids matching the title passed when
+        intialising the class instance as a list of strings.
+
+        Returns
+        -------
+        titles : List of Strings
+            All the movie ids matching the title passed when initialising
+            the class instance as a list of strings.
+
+        &#34;&#34;&#34;
+        movies = self.get_descriptions()
+        ids = [movie[&#34;id&#34;] for movie in movies]
+        return ids
+    
+    def get_best_match_id(self):
+        &#34;&#34;&#34;
+        Gets and returns the id of the movie with the best match with the title
+        passed when intialising the class instance as a string.
+
+        Returns
+        -------
+        titles : String
+            The id of the movie with the best match with the title passed when 
+            intialising the class instance as a string.
+
+        &#34;&#34;&#34;
+        return self.get_ids()[0]</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="movie_search.MovieSearch.get_best_match_description"><code class="name flex">
+<span>def <span class="ident">get_best_match_description</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets and returns the movie description with the best match with the title
+passed when intialising the class instance as a dict of Strings.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>movie_description</code></strong> :&ensp;<code>Dict</code> of <code>Strings</code></dt>
+<dd>The movie description with the best match with the title passed when
+intialising the class instance as a dict of Strings.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_best_match_description(self):
+    &#34;&#34;&#34;
+    Gets and returns the movie description with the best match with the title
+    passed when intialising the class instance as a dict of Strings.
+
+    Returns
+    -------
+    movie_description : Dict of Strings
+        The movie description with the best match with the title passed when 
+        intialising the class instance as a dict of Strings.
+
+    &#34;&#34;&#34;
+    movieDescription = self.get_descriptions()[0]
+    return movieDescription</code></pre>
+</details>
+</dd>
+<dt id="movie_search.MovieSearch.get_best_match_id"><code class="name flex">
+<span>def <span class="ident">get_best_match_id</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets and returns the id of the movie with the best match with the title
+passed when intialising the class instance as a string.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>titles</code></strong> :&ensp;<code>String</code></dt>
+<dd>The id of the movie with the best match with the title passed when
+intialising the class instance as a string.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_best_match_id(self):
+    &#34;&#34;&#34;
+    Gets and returns the id of the movie with the best match with the title
+    passed when intialising the class instance as a string.
+
+    Returns
+    -------
+    titles : String
+        The id of the movie with the best match with the title passed when 
+        intialising the class instance as a string.
+
+    &#34;&#34;&#34;
+    return self.get_ids()[0]</code></pre>
+</details>
+</dd>
+<dt id="movie_search.MovieSearch.get_descriptions"><code class="name flex">
+<span>def <span class="ident">get_descriptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets and returns all the movie descriptions matching the title passed when
+initialising the class instance as a list of dicts of Strings.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>movies</code></strong> :&ensp;<code>List</code> of <code>Dicts</code> of <code>Strings</code></dt>
+<dd>All the movie descriptions matching the title passed when initialising the
+class instance as a list of dicts of Strings.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_descriptions(self):
+    &#34;&#34;&#34;
+    Gets and returns all the movie descriptions matching the title passed when
+    initialising the class instance as a list of dicts of Strings.
+    
+    Returns
+    -------
+    movies : List of Dicts of Strings
+        All the movie descriptions matching the title passed when initialising the
+        class instance as a list of dicts of Strings.
+
+    &#34;&#34;&#34;
+    descriptions =  self.get_response()[&#34;results&#34;]
+    return descriptions</code></pre>
+</details>
+</dd>
+<dt id="movie_search.MovieSearch.get_ids"><code class="name flex">
+<span>def <span class="ident">get_ids</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets and returns all the movie ids matching the title passed when
+intialising the class instance as a list of strings.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>titles</code></strong> :&ensp;<code>List</code> of <code>Strings</code></dt>
+<dd>All the movie ids matching the title passed when initialising
+the class instance as a list of strings.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_ids(self):
+    &#34;&#34;&#34;
+    Gets and returns all the movie ids matching the title passed when
+    intialising the class instance as a list of strings.
+
+    Returns
+    -------
+    titles : List of Strings
+        All the movie ids matching the title passed when initialising
+        the class instance as a list of strings.
+
+    &#34;&#34;&#34;
+    movies = self.get_descriptions()
+    ids = [movie[&#34;id&#34;] for movie in movies]
+    return ids</code></pre>
+</details>
+</dd>
+<dt id="movie_search.MovieSearch.get_response"><code class="name flex">
+<span>def <span class="ident">get_response</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets and returns the response of the movie search request of the title
+passed when initialising the class instance on the imdb API as a JSON
+object.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>response</code></strong> :&ensp;<code>String</code></dt>
+<dd>The response of the movie search request of the title passed when
+initialising the class instance on the imdb API as a JSON object.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_response(self):
+    &#34;&#34;&#34;
+    Gets and returns the response of the movie search request of the title
+    passed when initialising the class instance on the imdb API as a JSON
+    object.
+    
+    Returns
+    -------
+    response : String
+        The response of the movie search request of the title passed when 
+        initialising the class instance on the imdb API as a JSON object.
+
+    &#34;&#34;&#34;
+    response = self._responseMovieSearch.json()
+    return response</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="movie_search.MovieSearch" href="#movie_search.MovieSearch">MovieSearch</a></code></h4>
+<ul class="">
+<li><code><a title="movie_search.MovieSearch.get_best_match_description" href="#movie_search.MovieSearch.get_best_match_description">get_best_match_description</a></code></li>
+<li><code><a title="movie_search.MovieSearch.get_best_match_id" href="#movie_search.MovieSearch.get_best_match_id">get_best_match_id</a></code></li>
+<li><code><a title="movie_search.MovieSearch.get_descriptions" href="#movie_search.MovieSearch.get_descriptions">get_descriptions</a></code></li>
+<li><code><a title="movie_search.MovieSearch.get_ids" href="#movie_search.MovieSearch.get_ids">get_ids</a></code></li>
+<li><code><a title="movie_search.MovieSearch.get_response" href="#movie_search.MovieSearch.get_response">get_response</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

@@ -4,20 +4,20 @@ Authors: Driss BENSAID & Enzo Fragale
 Date of creation: 15/11/2022
 
 """
+
+# Example of how to use the package:
+
+# Import module
 import movie
 
-text="inception"
+# Set movie title to look ratings for
+title = "inception"
 
-movie = movie.Movie(text)
+# Instantiate Movie class from title
+movie = movie.Movie(title)
 
-movie.json_print()
+# Choose the best way for you to print the results
 
-
-
-
-#import argparse
-
-#parser = argparse.ArgumentParser(description='Create a ArcHydro schema')
-#parser.add_argument('--workspace', metavar='path', required=True, help='the path to workspace')
-#args = parser.parse_args()
-#main(workspace=args.workspace, schema=args.schema, dem=args.dem)
+print(movie.get_ratings_list())
+movie.ui_print()
+movie.json_full_print()

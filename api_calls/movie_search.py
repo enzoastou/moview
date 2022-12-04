@@ -14,7 +14,7 @@ class MovieSearch:
     Contains various functions to retrieve results from a movie search request
     on the imdb API.
     """
-    _searchTitle=""
+    _searchedTitle=""
     _responseMovieSearch=""
     
     def __new__(cls, *args, **kwargs):
@@ -35,12 +35,12 @@ class MovieSearch:
         None.
 
         """
-        self._searchTitle = title
+        self._searchedTitle = title
         load_dotenv()
         apiKey=os.getenv("KEY")
         self._responseMovieSearch = requests.get(
             "https://imdb-api.com/API/SearchMovie/" + apiKey + "/"
-            + self._searchTitle)
+            + self._searchedTitle)
         
     def __repr__(self) -> str:
         return f"{type(self).__name__}(type={self._type}, \
@@ -62,34 +62,35 @@ class MovieSearch:
         response = self._responseMovieSearch.json()
         return response
     
-    def get_movies(self):
+    def get_descriptions(self):
         """
         Gets and returns all the movie descriptions matching the title passed when
-        initialising the class instance as a JSON array.
+        initialising the class instance as a list of dicts of Strings.
         
         Returns
         -------
-        movies : String
+        movies : List of Dicts of Strings
             All the movie descriptions matching the title passed when initialising the
-            class instance as a JSON array.
+            class instance as a list of dicts of Strings.
 
         """
-        movies =  self.get_response()["results"]
-        return movies
+        descriptions =  self.get_response()["results"]
+        return descriptions
     
-    def get_best_match_movie(self):
+    def get_best_match_description(self):
         """
         Gets and returns the movie description with the best match with the title
-        passed when intialising the class instance as a JSON object.
+        passed when intialising the class instance as a dict of Strings.
 
         Returns
         -------
-        titles : String
+        movie_description : Dict of Strings
             The movie description with the best match with the title passed when 
-            intialising the class instance as a string.
+            intialising the class instance as a dict of Strings.
 
         """
-        return self.get_movies()[0]
+        movieDescription = self.get_descriptions()[0]
+        return movieDescription
     
     def get_ids(self):
         """
@@ -98,12 +99,12 @@ class MovieSearch:
 
         Returns
         -------
-        titles : String list
+        titles : List of Strings
             All the movie ids matching the title passed when initialising
             the class instance as a list of strings.
 
         """
-        movies = self.get_movies()
+        movies = self.get_descriptions()
         ids = [movie["id"] for movie in movies]
         return ids
     

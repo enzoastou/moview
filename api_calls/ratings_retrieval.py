@@ -13,7 +13,7 @@ class RatingsRetrieval:
     Contains various functions to retrieve ratings from a movie id on the imdb
     API.
     """
-    _id=""
+    _movieId=""
     _responseRatings=""
     
     def __new__(cls, *args, **kwargs):
@@ -34,12 +34,12 @@ class RatingsRetrieval:
         None.
 
         """
-        self._id = id
+        self._movieId = id
         load_dotenv()
         apiKey=os.getenv("KEY")
         self._responseRatings = requests.get(
             "https://imdb-api.com/API/Ratings/" + apiKey + "/" 
-            + self._id)
+            + self._movieId)
         
     def __repr__(self) -> str:
         return f"{type(self).__name__}(type={self._type}, \
